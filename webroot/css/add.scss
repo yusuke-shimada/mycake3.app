@@ -1,0 +1,26 @@
+$my-red:#a82f34;
+
+@mixin test {
+  background-color: #c9c9c9;
+}
+
+@mixin test2($align:center) {
+  text-align: $align;
+}
+
+.bookmarks h3 {
+  color: #0078a0;
+}
+
+.top-bar.expanded {
+  @include test;
+}
+
+div.message.error {
+  @extend .top-bar.expanded;
+  color: $my-red;
+  @include test2;
+  &:hover {
+    background-color: orange;
+  }
+}
