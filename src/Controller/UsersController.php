@@ -117,7 +117,7 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 return $this->redirect($this->Auth->redirectUrl());
             }
-            $this->Flash->error('あなたのユーザー名またはパスワードが不正です。');
+            $this->Flash->error('ユーザー名またはパスワードが不正です。');
         }
     }
 
