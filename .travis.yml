@@ -20,7 +20,7 @@ before_script:
   - if [[ $PHPCS != 1 ]]; then composer run-script post-install-cmd --no-interaction; fi
 
 script:
-  - if [[ $PHPCS != 1 ]]; then phpunit; fi
+#  - if [[ $PHPCS != 1 ]]; then phpunit; fi
   - if [[ $PHPCS = 1 ]]; then vendor/bin/phpcs -p --extensions=php --standard=psr2 ./src ./tests ./config ./webroot; fi
 
 notifications:
