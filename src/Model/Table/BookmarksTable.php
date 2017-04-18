@@ -90,21 +90,23 @@ class BookmarksTable extends Table
         return $rules;
     }
 
-    // $query 引数は、クエリービルダーのインスタンスです。
-    // $options 配列には、コントローラのアクション中で find('tagged') に渡した
-    // 'tag' オプションが含まれます。
+    /** $query 引数は、クエリービルダーのインスタンスです。
+    * $options 配列には、コントローラのアクション中で find('tagged') に渡した
+    * 'tag' オプションが含まれます。
+    */
     public function findTagged(Query $query, array $options)
     {
         return $this->find()
             ->distinct(['Bookmarks.id'])
             //->addWhere(['Bookmarks.user_id'] => $options['user_id'])
             ->matching('Tags', function ($q) use ($options) {
-               if (empty($options['tags'])) {
-                   return $q->where(['Tags.title IS' => null]);
-               }
-               return $q
-               ->where(['Bookmarks.user_id' => $options['user_id']])
-               ->where(['Tags.title IN' => $options['tags']]);
+                if (empty($options['tags'])) {
+                    return $q->where(['Tags.title IS' => null]);
+                }
+
+                return $q
+                ->where(['Bookmarks.user_id' => $options['user_id']])
+                ->where(['Tags.title IN' => $options['tags']]);
             });
     }
 
@@ -143,6 +145,7 @@ class BookmarksTable extends Table
         foreach ($newTags as $tag) {
             $out[] = $this->Tags->newEntity(['title' => $tag]);
         }
+
         return $out;
     }
 }
