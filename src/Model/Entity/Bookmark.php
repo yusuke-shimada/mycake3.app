@@ -21,7 +21,6 @@ use Cake\Collection\Collection;
  */
 class Bookmark extends Entity
 {
-
     protected function _getTagString()
     {
         if (isset($this->_properties['tag_string'])) {
