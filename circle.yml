@@ -5,3 +5,5 @@ dependencies:
   pre:
     - pip install ansible
     - ansible-playbook -i /home/ubuntu/mycake3.app/ansible/hosts /home/ubuntu/mycake3.app/ansible/playbook.yml
+  override:
+    - composer update
