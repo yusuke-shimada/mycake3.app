@@ -1,0 +1,10 @@
+- name: setup circleci
+  hosts: all
+  gather_facts: no
+  connection: local
+  tasks:
+    - name: update composer
+      command: /usr/local/bin/composer update
+      
+    - name: install boto3
+      command: pip install boto3

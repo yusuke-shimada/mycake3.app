@@ -4,5 +4,4 @@ machine:
 dependencies:
   pre:
     - pip install ansible
-  override:
-    - composer update
+    - ansible-playbook -i hosts playbook.yml
